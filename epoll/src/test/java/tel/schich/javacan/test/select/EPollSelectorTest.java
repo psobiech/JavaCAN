@@ -26,7 +26,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 import tel.schich.javacan.CanChannels;
 import tel.schich.javacan.CanFrame;
-import tel.schich.javacan.CanSocketOptions;
+import tel.schich.javacan.RawCanSocketOptions;
 import tel.schich.javacan.RawCanChannel;
 import tel.schich.javacan.platform.linux.UnixFileDescriptor;
 import tel.schich.javacan.platform.linux.epoll.EPollSelector;
@@ -43,7 +43,7 @@ import java.util.List;
 import static java.time.Duration.ofMillis;
 import static org.junit.jupiter.api.Assertions.*;
 import static tel.schich.javacan.CanFrame.FD_NO_FLAGS;
-import static tel.schich.javacan.CanSocketOptions.RECV_OWN_MSGS;
+import static tel.schich.javacan.RawCanSocketOptions.RECV_OWN_MSGS;
 import static tel.schich.javacan.test.CanTestHelper.CAN_INTERFACE;
 import static tel.schich.javacan.test.CanTestHelper.runDelayed;
 
@@ -131,7 +131,7 @@ public class EPollSelectorTest {
         System.out.println("Created channel: " + ch);
 
         ch.configureBlocking(false);
-        ch.setOption(CanSocketOptions.LOOPBACK, true);
+        ch.setOption(RawCanSocketOptions.LOOPBACK, true);
         SelectorRegistration<UnixFileDescriptor, RawCanChannel> registration = selector.register(ch, SelectorRegistration.Operation.READ);
         System.out.println("Selection key: " + registration);
 
