@@ -63,7 +63,7 @@ public class Platform {
         String archSuffix;
         String arch = System.getProperty("os.arch").toLowerCase();
         if (arch.contains("arm")) {
-            archSuffix = "armv7";
+            archSuffix = "armv7a";
         } else if (arch.contains("86") || arch.contains("amd")) {
             if (arch.contains("64")) {
                 archSuffix = "x86_64";
